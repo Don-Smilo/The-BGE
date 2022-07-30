@@ -47,4 +47,5 @@ int main() {
 		Separator(2, 1000);
 	}
 	YouDied();
+	system("pause");
 }

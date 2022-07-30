@@ -172,7 +172,7 @@ void Battle(Enemy* enemy, Player* player) {
 				if (player->scale >= 25) {
 					player->scale -= 25;
 					cout << player->scale_name << ": " << player->scale << '/' << player->scalemax << endl << endl;
-					impact = player->GiveDamage(1) * (1 - enemy->armor*1. / 100);
+					impact = player->GiveDamage(2) * (1 - enemy->armor*1. / 100);
 				}
 				else {
 					cout << player->scale_name << " - недостаточно" << endl;
@@ -215,16 +215,14 @@ void Battle(Enemy* enemy, Player* player) {
 			impact = enemy->attack * (1 - player->armor_total*1./100);
 			cout << "Получено урона: " << impact << endl;
 			player->health -= impact;
-			if (player->health < 0) {
+			if (player->health <= 0) {
 				if (player->revive) {
 					player->Reviving();
 					cout << "Здоровье: " << player->health << '/' << player->healthmax << endl;
-					break;
 				}
 				else {
 					cout << "Вас убил: " << enemy->name << endl;
 				}
-				break;
 			}
 			else
 				cout << "Здоровье: " << player->health << '/' << player->healthmax << endl;
